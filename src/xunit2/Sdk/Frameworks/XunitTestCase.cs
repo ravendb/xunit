@@ -161,6 +161,7 @@ namespace Xunit.Sdk
         {
             return classUnderTest.GetCustomAttributes(typeof(BeforeAfterTestAttribute))
                                  .Concat(methodUnderTest.GetCustomAttributes(typeof(BeforeAfterTestAttribute)))
+								 .Concat(classUnderTest.Assembly.GetCustomAttributes(typeof(BeforeAfterTestAttribute)))
                                  .Cast<BeforeAfterTestAttribute>();
         }
 
