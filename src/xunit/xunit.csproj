@@ -109,6 +109,7 @@
     <Compile Include="Sdk\Commands\TestCommands\DelegatingTestCommand.cs" />
     <Compile Include="Sdk\Commands\TestCommands\FixtureCommand.cs" />
     <Compile Include="Sdk\TestTimer.cs" />
+    <Compile Include="SkipException.cs" />
     <Compile Include="TraitAttribute.cs" />
     <Compile Include="Sdk\Commands\ClassCommands\TestClassCommandRunner.cs" />
     <Compile Include="Sdk\Commands\ClassCommands\TestClassCommandFactory.cs" />

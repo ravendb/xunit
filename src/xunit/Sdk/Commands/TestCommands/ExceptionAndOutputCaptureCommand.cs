@@ -54,6 +54,10 @@ namespace Xunit.Sdk
 
                     result = InnerCommand.Execute(testClass);
                 }
+                catch (SkipException e)
+                {
+                    result = new SkipResult(method, DisplayName, e.Message);
+                }
                 catch (Exception ex)
                 {
                     result = new FailedResult(method, ex, DisplayName);

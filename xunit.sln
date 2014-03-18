@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F7CBFE15-FFEE-407C-8B3D-8C4D7A3F0928}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A1DA311E-42FE-4859-8D6C-045963B17A61}"
@@ -39,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.xunit.runner.utility", "test\test.xunit.runner.utility\test.xunit.runner.utility.csproj", "{BF9A60D8-F67E-4D30-AAB0-F1C9DEDF693F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xunit.runner.visualstudio", "src\xunit.runner.visualstudio\xunit.runner.visualstudio.csproj", "{924678EB-03AF-4513-827F-8D311CAFDAD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xunit.tryouts", "xunit.tryouts\xunit.tryouts.csproj", "{C256FAFB-549A-414F-83D1-23307A292112}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +114,10 @@ Global
 		{924678EB-03AF-4513-827F-8D311CAFDAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{924678EB-03AF-4513-827F-8D311CAFDAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{924678EB-03AF-4513-827F-8D311CAFDAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C256FAFB-549A-414F-83D1-23307A292112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C256FAFB-549A-414F-83D1-23307A292112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C256FAFB-549A-414F-83D1-23307A292112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C256FAFB-549A-414F-83D1-23307A292112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
