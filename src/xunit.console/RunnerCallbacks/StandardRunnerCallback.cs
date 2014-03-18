@@ -11,6 +11,7 @@ namespace Xunit.ConsoleClient
         int testCount = 0;
         readonly int totalCount;
 		private Stopwatch testTimer = new Stopwatch();
+        private Stopwatch assemblyTimer = new Stopwatch();
 	    private StreamWriter timing, log;
 
 	    public StandardRunnerCallback(string timingReport, bool silent, int totalCount)
@@ -28,6 +29,8 @@ namespace Xunit.ConsoleClient
         public override void AssemblyFinished(TestAssembly testAssembly, int total, int failed, int skipped, double time)
         {
 			timing.Dispose();
+            assemblyTimer.Reset();
+            assemblyTimer.Start();
 			
 			base.AssemblyFinished(testAssembly, total, failed, skipped, time);
 
@@ -122,7 +125,7 @@ namespace Xunit.ConsoleClient
             if (!silent)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("\rTests complete: {0} of {1} (last test duration: {2:#,#;;0} ms", ++testCount, totalCount, testTimer.ElapsedMilliseconds);
+                Console.Write("\rTests complete: {0} of {1}. Last test took: {2,7:#,#;;0} ms. Total: {3}", ++testCount, totalCount, testTimer.ElapsedMilliseconds, assemblyTimer.Elapsed);
                 Console.ResetColor();
             }
 
