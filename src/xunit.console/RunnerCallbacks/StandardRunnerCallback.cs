@@ -122,7 +122,7 @@ namespace Xunit.ConsoleClient
             if (!silent)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("\rTests complete: {0} of {1}", ++testCount, totalCount);
+                Console.Write("\rTests complete: {0} of {1} (last test duration: {2:#,#;;0} ms", ++testCount, totalCount, testTimer.ElapsedMilliseconds);
                 Console.ResetColor();
             }
 

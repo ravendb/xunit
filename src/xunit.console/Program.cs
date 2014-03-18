@@ -120,7 +120,7 @@ namespace Xunit.ConsoleClient
                 {
                     var methods = new List<TestMethod>(testAssembly.EnumerateTestMethods(project.Filters.Filter));
 
-	                SortByTiming(assembly, methods);
+	                var prevTests = SortByTiming(assembly, methods);
 
                     if (methods.Count == 0)
                     {
@@ -131,7 +131,7 @@ namespace Xunit.ConsoleClient
 	                var timingReport = assembly.AssemblyFilename + "." + DateTime.UtcNow.ToString("O").Replace(":","-")  +".test-metrics.txt";
 	                var callback =
                         teamcity ? (RunnerCallback)new TeamCityRunnerCallback()
-								 : new StandardRunnerCallback(timingReport, silent, methods.Count);
+                                 : new StandardRunnerCallback(timingReport, silent, Math.Max(prevTests, methods.Count));
                     var assemblyXml = testAssembly.Run(methods, callback);
 
                     ++totalAssemblies;
@@ -161,13 +161,14 @@ namespace Xunit.ConsoleClient
             return totalFailures;
         }
 
-	    private static void SortByTiming(XunitProjectAssembly assembly, List<TestMethod> methods)
+	    private static int SortByTiming(XunitProjectAssembly assembly, List<TestMethod> methods)
 	    {
 			var fileMask = Path.GetFileName(assembly.AssemblyFilename) + ".*.test-metrics.txt";
 		    var results = Directory.GetFileSystemEntries(Path.GetDirectoryName(assembly.AssemblyFilename), fileMask);
-			if (results.Length == 0)
-			    return;
+	        if (results.Length == 0)
+	            return 0;
 
+	        int tests = 0;
 		    var timings = new Dictionary<string, int>();
 			foreach (var line in File.ReadAllLines(results[results.Length-1]))
 			{
@@ -177,6 +178,7 @@ namespace Xunit.ConsoleClient
 				int val;
 				if (int.TryParse(strings[1], out val) == false)
 					continue;
+			    tests ++;
 				timings[strings[0]] = val;
 			}
 
@@ -190,6 +192,8 @@ namespace Xunit.ConsoleClient
 					yTime = -1;
 				return xTime - yTime;
 			});
+
+	        return tests;
 	    }
     }
 }
