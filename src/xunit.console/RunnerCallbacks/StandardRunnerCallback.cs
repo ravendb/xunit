@@ -11,7 +11,7 @@ namespace Xunit.ConsoleClient
         int testCount = 0;
         readonly int totalCount;
 		private Stopwatch testTimer = new Stopwatch();
-        private Stopwatch assemblyTimer = new Stopwatch();
+        private Stopwatch assemblyTimer = Stopwatch.StartNew();
 	    private StreamWriter timing, log;
 
 	    public StandardRunnerCallback(string timingReport, bool silent, int totalCount)
