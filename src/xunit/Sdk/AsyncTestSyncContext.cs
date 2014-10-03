@@ -35,7 +35,14 @@ namespace Xunit.Sdk
 			        var name = _method.Name;
 			        if (_method.DeclaringType != null)
 				        name = _method.DeclaringType.FullName + "." + name;
-			        Console.Error.WriteLine("Error when trying to set operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+			        try
+			        {
+				        Console.Error.WriteLine("Error when trying to set operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+			        }
+			        catch (Exception)
+			        {
+				        
+			        }
 		        }
 	        }
         }
@@ -52,7 +59,14 @@ namespace Xunit.Sdk
 				var name = _method.Name;
 				if (_method.DeclaringType != null)
 					name = _method.DeclaringType.FullName + "." + name;
-				Console.Error.WriteLine("Error when trying to reset operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+		        try
+		        {
+			        Console.Error.WriteLine("Error when trying to reset operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+		        }
+		        catch (Exception)
+		        {
+			        
+		        }
 	        }
         }
 
@@ -99,7 +113,13 @@ namespace Xunit.Sdk
 				var name = _method.Name;
 				if (_method.DeclaringType != null)
 					name = _method.DeclaringType.FullName + "." + name;
-				Console.Error.WriteLine("Error when trying to wait on operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+				try
+				{
+					Console.Error.WriteLine("Error when trying to wait on operation in: {1}, probably a leaked task?\r\n{0}", e, name);
+				}
+				catch (Exception)
+				{
+				}
 			}
             return exception;
         }
