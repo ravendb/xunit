@@ -68,6 +68,8 @@
     </Compile>
     <Compile Include="Assert.cs" />
     <Compile Include="Sdk\AsyncTestSyncContext.cs" />
+    <Compile Include="Sdk\Commands\TestCommands\TestResultCallbackCommand.cs" />
+    <Compile Include="Sdk\TestResultCallbackAttribute.cs" />
     <Compile Include="Sdk\Commands\TestCommands\ExceptionAndOutputCaptureCommand.cs" />
     <Compile Include="Sdk\Commands\TestCommands\FactCommand.cs" />
     <Compile Include="Sdk\Exceptions\AssertActualExpectedException.cs" />

@@ -21,6 +21,7 @@ namespace Xunit.Sdk
                 ITestCommand wrappedCommand = testCommand;
 
                 // Timeout (if they have one) -> Capture -> Timed -> Lifetime (if we need an instance) -> BeforeAfter
+                wrappedCommand = new TestResultCallbackCommand(wrappedCommand, method);
 
                 wrappedCommand = new BeforeAfterCommand(wrappedCommand, method.MethodInfo);
 
