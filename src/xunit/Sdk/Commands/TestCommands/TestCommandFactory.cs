@@ -20,10 +20,10 @@ namespace Xunit.Sdk
             {
                 ITestCommand wrappedCommand = testCommand;
 
-                // Timeout (if they have one) -> Capture -> Timed -> Lifetime (if we need an instance) -> BeforeAfter
-                wrappedCommand = new TestResultCallbackCommand(wrappedCommand, method);
-
+                // Timeout (if they have one) -> Capture -> Timed -> Lifetime (if we need an instance) -> TestResultCallback -> BeforeAfter
                 wrappedCommand = new BeforeAfterCommand(wrappedCommand, method.MethodInfo);
+
+                wrappedCommand = new TestResultCallbackCommand(wrappedCommand, method);
 
                 if (testCommand.ShouldCreateInstance)
                     wrappedCommand = new LifetimeCommand(wrappedCommand, method);
